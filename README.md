@@ -25,18 +25,18 @@ This is the template project for the BWENG course.
 ## Setup
 Build Docker container
 ```shell
-docker-compose build
+docker compose build
 ```
 Start Docker container (with build)
 ```shell
-docker-compose up
-docker-compose up --build
+docker compose up
+docker compose up --build
 ```
 Stop Docker container
 ```shell
-docker-compose stop
+docker compose stop
 ```
 Remove Docker container
 ```shell
-docker-compose down
+docker compose down
 ```
