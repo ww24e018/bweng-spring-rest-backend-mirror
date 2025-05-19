@@ -15,7 +15,9 @@ public class KarteiController {
     private KarteiRepository karteiRepository;
 
     @PostMapping(path = "/add")
-    public @ResponseBody String addNewKartei(@RequestParam String name, @RequestParam String beschreibung) {
+    public @ResponseBody String addNewKartei(
+            @RequestParam String name,
+            @RequestParam String beschreibung) {
 
         Kartei k = new Kartei();
         k.setName(name);
