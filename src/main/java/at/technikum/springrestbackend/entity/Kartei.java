@@ -3,6 +3,8 @@ package at.technikum.springrestbackend.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 // trying https://spring.io/guides/gs/accessing-data-mysql
 
 @Entity
@@ -19,6 +21,14 @@ public class Kartei {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user ;
+
+    // @JsonIgnore Note for future use;
+    @OneToMany(mappedBy = "kartei") // java attribut name
+    private List<Karte> karten ;
+
+    public List<Karte> getKarten() {
+        return karten;
+    }
 
     public User getUser() {
         return user;
