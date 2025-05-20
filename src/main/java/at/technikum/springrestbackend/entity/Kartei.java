@@ -1,10 +1,7 @@
 package at.technikum.springrestbackend.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 // trying https://spring.io/guides/gs/accessing-data-mysql
 
@@ -15,6 +12,21 @@ public class Kartei {
     private Integer id ;
     private String name ;
     private String beschreibung ;
+    private boolean isPublic ;
+
+    // IntelliJ strongly suggests this, referencing spring/boot
+    // the "user_id" column name drops from nowhere, but let's try it I guess
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user ;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;
