@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/dummydata")
@@ -30,18 +29,13 @@ public class DummyDataController {
 
         User user1 = new User("Jane", "Doe");
         User user2 = new User("John", "DifferentDoe");
-        List<User> usersToCreate = new ArrayList<User>();
-        usersToCreate.add(user1); usersToCreate.add(user2);
+        this.userRepository.save(user1); this.userRepository.save(user2);
 
-        this.userRepository.saveAll(usersToCreate);
-
-        List<Kartei> karteienToCreate = new ArrayList<Kartei>();
         Kartei kartei1 = new Kartei(user1, "Lernkarte für Bollards", "Für geoguessr");
         Kartei kartei2 = new Kartei(user2, "Wiener Bezirke", "Es gibt 23 Wiener Bezirke");
-        karteienToCreate.add(kartei1);
-        karteienToCreate.add(kartei2);
 
-        this.karteiRepository.saveAll(karteienToCreate);
+        this.karteiRepository.save(kartei1);
+        this.karteiRepository.save(kartei2);
 
         return "done for now. oder so.";
     }
