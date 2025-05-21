@@ -14,7 +14,7 @@ public class Kartei {
     private Integer id ;
     private String name ;
     private String beschreibung ;
-    private boolean isPublic ;
+    private Boolean isPublic ;
 
     // IntelliJ strongly suggests this, referencing spring/boot
     // the "user_id" column name drops from nowhere, but let's try it I guess
@@ -61,4 +61,13 @@ public class Kartei {
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
+
+    public Boolean getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(Boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
 }

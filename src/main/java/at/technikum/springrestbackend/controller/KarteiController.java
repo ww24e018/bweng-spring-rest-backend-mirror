@@ -1,6 +1,7 @@
 package at.technikum.springrestbackend.controller;
 
 
+import at.technikum.springrestbackend.dto.KarteiDto;
 import at.technikum.springrestbackend.entity.Kartei;
 import at.technikum.springrestbackend.repository.KarteiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class KarteiController {
     }
 
     @GetMapping(path = "/all")
-    public @ResponseBody Iterable<Kartei> getAllKarteien() {
-        return karteiRepository.findAll();
+    public @ResponseBody Iterable<KarteiDto> getAllKarteien() {
+        return KarteiDto.mapKarteienIterableToDtoIterable(karteiRepository.findAll());
     }
 
 }
