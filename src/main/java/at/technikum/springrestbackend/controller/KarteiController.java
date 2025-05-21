@@ -15,7 +15,7 @@ public class KarteiController {
     @Autowired
     private KarteiRepository karteiRepository;
 
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/add-defunct-deprecated-example")
     public @ResponseBody String addNewKartei(
             @RequestParam String name,
             @RequestParam String beschreibung) {
