@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping(path = "/kartei")
 public class KarteiController {
@@ -25,6 +28,24 @@ public class KarteiController {
         k.setBeschreibung(beschreibung);
         karteiRepository.save(k);
         return "saved";
+    }
+
+    @GetMapping(path = "/{id}")
+    public @ResponseBody KarteiDto getKarteiDtoById(@PathVariable Integer id) {
+        KarteiDto karteiDto = new KarteiDto(
+                this.karteiRepository.getKarteiById(id)
+        );
+        return karteiDto;
+    }
+
+    @GetMapping(path = "/all/onlyids")
+    public @ResponseBody List<Integer> getIdsOfAllKarteien() {
+        Iterable<Kartei> karteien = karteiRepository.findAll();
+        List<Integer> allIds = new ArrayList<Integer>();
+        for (Kartei kartei : karteien) {
+            allIds.add(kartei.getId());
+        }
+        return allIds;
     }
 
     @GetMapping(path = "/all")
