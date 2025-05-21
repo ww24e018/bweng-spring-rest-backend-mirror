@@ -3,6 +3,7 @@ package at.technikum.springrestbackend.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // trying https://spring.io/guides/gs/accessing-data-mysql
@@ -12,9 +13,9 @@ public class Kartei {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id ;
-    private String name ;
-    private String beschreibung ;
-    private Boolean isPublic ;
+    private String name;
+    private String beschreibung;
+    private Boolean isPublic;
 
     // IntelliJ strongly suggests this, referencing spring/boot
     // the "user_id" column name drops from nowhere, but let's try it I guess
@@ -25,6 +26,27 @@ public class Kartei {
     // @JsonIgnore Note for future use;
     @OneToMany(mappedBy = "kartei") // java attribut name
     private List<Karte> karten ;
+
+    // Constructor now
+
+
+    public Kartei() {
+        this.name = "";
+        this.beschreibung = "";
+        this.isPublic = Boolean.FALSE;
+        this.karten = new ArrayList<Karte>();
+        // let user be null per default
+    }
+    public Kartei(User user) {
+        this();
+        this.user = user;
+    }
+    public Kartei(User user, String name, String beschreibung) {
+        this(user);
+        this.name = name;
+        this.beschreibung = beschreibung;
+    }
+
 
     public List<Karte> getKarten() {
         return karten;

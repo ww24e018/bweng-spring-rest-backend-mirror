@@ -22,6 +22,20 @@ public class User {
 
     // kein eigen-definierter Constructor for now? siehe ILV
 
+    public User() {
+        this.anrede = "";
+        this.profilepictureURL = "";
+        this.email = "";
+        this.vorname = "";
+        this.nachname = "";
+        this.land = "at";
+        this.passwordHash = "";
+    }
+    public User(String vorname, String nachname) {
+        this();
+        this.vorname = vorname;
+        this.nachname = nachname;
+    }
 
     public String getId() {
         return id;
