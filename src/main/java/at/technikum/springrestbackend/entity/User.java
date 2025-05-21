@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)  // Methode von Tutorial von Moodle EH3/SelfStudy
-    private String id ;
+    private Integer id ;
 
     private String profilepictureURL ;
     private String email ;
@@ -37,11 +37,11 @@ public class User {
         this.nachname = nachname;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
