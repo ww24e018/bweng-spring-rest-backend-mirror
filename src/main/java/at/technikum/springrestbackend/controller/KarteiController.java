@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @Controller
 @RequestMapping(path = "/kartei")
 public class KarteiController {
