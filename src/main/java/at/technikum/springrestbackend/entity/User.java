@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 
 @Entity
 public class User {
@@ -13,6 +14,7 @@ public class User {
     private Integer id ;
 
     private String profilepictureURL ;
+    @Email
     private String email ;
     private String anrede ;
     private String vorname ;
