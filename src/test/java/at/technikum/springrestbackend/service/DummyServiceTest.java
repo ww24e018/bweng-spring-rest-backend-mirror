@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+
 public class DummyServiceTest {
 
-    @Autowired
-    private DummyService dummyService;
+    //@Autowired
+    private DummyService dummyService = new DummyService();
 
     @Test
-    @Disabled("disabled cause blocking")
+    //@Disabled("disabled cause blocking")
     public void testisPalindrome_withValidPalindrome() {
         boolean result = dummyService.isPalindrome("kivik");
         Assertions.assertTrue(result);
