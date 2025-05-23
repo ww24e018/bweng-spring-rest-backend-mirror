@@ -1,7 +1,10 @@
 package at.technikum.springrestbackend.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -9,6 +12,12 @@ public class Karte {
 
     @Id
     private String id ;
+
+    // see https://docs.spring.io/spring-data/jpa/reference/auditing.html#jpa.auditing.configuration
+    @CreationTimestamp
+    private Instant createdDate;
+    @UpdateTimestamp
+    private Instant lastModifiedDate;
 
     @ManyToOne
     @JoinColumn(name = "kartei_id")

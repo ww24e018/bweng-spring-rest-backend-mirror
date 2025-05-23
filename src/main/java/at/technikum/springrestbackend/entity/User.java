@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Entity
 public class User {
@@ -13,13 +17,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)  // Methode von Tutorial von Moodle EH3/SelfStudy
     private Integer id ;
 
+    @CreationTimestamp
+    private Instant createdDate;
+
+    @UpdateTimestamp
+    private Instant lastModifiedDate;
+
     private String profilepictureURL ;
     @Email
     private String email ;
     private String anrede ;
     private String vorname ;
     private String nachname ;
-    private String passwordHash ;
+    private final String passwordHash ;
     private String land ; // iso code?
 
     // kein eigen-definierter Constructor for now? siehe ILV
@@ -103,4 +113,23 @@ public class User {
     public void setLand(String land) {
         this.land = land;
     }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+
+
 }

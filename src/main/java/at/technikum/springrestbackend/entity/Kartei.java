@@ -2,7 +2,10 @@ package at.technikum.springrestbackend.entity;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,11 @@ public class Kartei {
     private String name;
     private String beschreibung;
     private Boolean isPublic;
+
+    @CreationTimestamp
+    private Instant createdDate;
+    @UpdateTimestamp
+    private Instant lastModifiedDate;
 
     // IntelliJ strongly suggests this, referencing spring/boot
     // the "user_id" column name drops from nowhere, but let's try it I guess
