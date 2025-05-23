@@ -27,17 +27,22 @@ public class DummyDataController {
     public @ResponseBody String doDummyDataset1() {
         // do stuff
 
-        User user1 = new User("Jane", "Doe");
-        User user2 = new User("John", "DifferentDoe");
-        this.userRepository.save(user1); this.userRepository.save(user2);
+        try {
+            User user1 = new User("Jane", "Doe");
+            User user2 = new User("John", "DifferentDoe");
+            this.userRepository.save(user1);
+            this.userRepository.save(user2);
 
-        Kartei kartei1 = new Kartei(user1, "Lernkarte für Bollards", "Für geoguessr");
-        Kartei kartei2 = new Kartei(user2, "Wiener Bezirke", "Es gibt 23 Wiener Bezirke");
+            Kartei kartei1 = new Kartei(user1, "Lernkarte für Bollards", "Für geoguessr");
+            Kartei kartei2 = new Kartei(user2, "Wiener Bezirke", "Es gibt 23 Wiener Bezirke");
 
-        this.karteiRepository.save(kartei1);
-        this.karteiRepository.save(kartei2);
+            this.karteiRepository.save(kartei1);
+            this.karteiRepository.save(kartei2);
 
-        return "done for now. oder so.";
+            return "done for now. oder so.";
+        } catch (RuntimeException e) {
+            return "foobar: "+e.toString() ;
+        }
     }
 
 
